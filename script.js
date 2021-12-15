@@ -27,10 +27,13 @@ var characterSet = []
 var generatedPassword = "";
 
 //prompt for password length and error message
-if (passwordLength < 8 && passwordLength > 128); {
+if (passwordLength < 8 || passwordLength > 128) {
   window.alert("Invalid response, please choose a number between 8 and 128");
   passwordLength = window.prompt ("How many characters would you like your password to be")
 }
+
+console.log("passwordLength", passwordLength);
+
 // concat each option into characterSet Array
 if (askspecialCharacters === true) {
   characterSet=characterSet.concat(specialCharacters);
@@ -49,13 +52,14 @@ console.log (characterSet);
 
 //set up for loop
 for (var i=0; i <passwordLength; i++) {
-  var index = Math.floor(Math.random() * passwordLength);
+  var index = Math.floor(Math.random() * characterSet.length);
+ // need to continue the loop and concat the letters to generated password. 
+  generatedPassword += writePassword(characterSet, characterSet +1);
   }
-
+  
 return "password123";
+// generatedPassword = generatedPassword;
 }
-
-// need to continue the loop and concat the letter to generated password. 
 
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
@@ -66,14 +70,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
-//user prompts 
 
-
-//   return generatePassword();
-
-
-// Add event listener to generate button
+// Add event listener to activate button
 generateBtn.addEventListener("click", writePassword);
+
 
